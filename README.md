@@ -8,3 +8,6 @@ This game plays just like any other Minesweeper game. If you already know how to
 * This version of Minesweeper has a 15x15 grid, with a total of 30 bombs. A common strategy is to randomly click until you get a big opening with lots of numbers.
 * Flags are used to prevent a mine from exploding on the corresponding tile.
 * When you click on a mine, it's game over and you have to restart from the very beginning.
+
+## Installation Instructions
+Simply download the zip file from the [releases page](https://github.com/Zachary-Rude/Minesweepersharp/releases), extract it, and launch `MinesweeperSharp.exe`!
