@@ -114,6 +114,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\DSEG14Classic-Bold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

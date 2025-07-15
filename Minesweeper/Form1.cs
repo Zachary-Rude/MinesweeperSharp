@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,10 +37,9 @@ namespace Minesweeper
 			{
 				WindowTitle = "MinesweeperSharp",
 				MainInstruction = "Game Over!",
-				Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}",
+				Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}. Do you want to try again?",
 				MainIcon = TaskDialogIcon.Information,
-				Buttons = new TaskDialogButton[] { btnPlayAgain, btnClose },
-				AllowDialogCancellation = true
+				Buttons = new TaskDialogButton[] { btnPlayAgain, btnClose }
 			};
 			GenerateBombs();
 			GeneratePositionValue();
@@ -136,7 +138,7 @@ namespace Minesweeper
 				btn.Text = "💣";
 
 				pnlBody.Enabled = false;
-				taskDialog.Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}";
+				taskDialog.Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}. Do you want to try again?";
 				int dr = taskDialog.Show();
 				if (dr == 101)
 					this.Close();
@@ -255,10 +257,13 @@ namespace Minesweeper
 				Button btn = (Button)sender;
 				if (string.IsNullOrEmpty(btn.Text))
 				{
-					btn.Text = "🚩";
-					btn.Font = new Font("Segoe UI Emoji", 8.25F);
-					btn.Click -= BtnClick;
-					flag--;
+					if (flag > 0)
+					{
+						btn.Text = "🚩";
+						btn.Font = new Font("Segoe UI Emoji", 8.25F);
+						btn.Click -= BtnClick;
+						flag--;
+					}
 				}
 				else if (!int.TryParse(btn.Text, out _))
 				{

@@ -61,8 +61,11 @@
 			// 
 			// textBox2
 			// 
+			this.textBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.textBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox2.Location = new System.Drawing.Point(313, 17);
+			this.textBox2.ForeColor = System.Drawing.Color.Red;
+			this.textBox2.Location = new System.Drawing.Point(313, 18);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.ReadOnly = true;
 			this.textBox2.Size = new System.Drawing.Size(56, 35);
@@ -73,7 +76,10 @@
 			// 
 			// textBox1
 			// 
+			this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox1.ForeColor = System.Drawing.Color.Red;
 			this.textBox1.Location = new System.Drawing.Point(12, 17);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
