@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Samples;
 
 namespace Minesweeper
 {
@@ -14,11 +15,30 @@ namespace Minesweeper
     {
 		byte[,] Positions = new byte[15, 15];
 		Button[,] ButtonList = new Button[15, 15];
-
+		TaskDialog taskDialog;
         public Form1()
         {
             InitializeComponent();
 			this.Icon = Properties.Resources.icon;
+			TaskDialogButton btnPlayAgain = new TaskDialogButton()
+			{
+				ButtonId = 100,
+				ButtonText = "&Play Again"
+			};
+			TaskDialogButton btnClose = new TaskDialogButton()
+			{
+				ButtonId = 101,
+				ButtonText = "&Close"
+			};
+			taskDialog = new TaskDialog()
+			{
+				WindowTitle = "MinesweeperSharp",
+				MainInstruction = "Game Over!",
+				Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}",
+				MainIcon = TaskDialogIcon.Information,
+				Buttons = new TaskDialogButton[] { btnPlayAgain, btnClose },
+				AllowDialogCancellation = true
+			};
 			GenerateBombs();
 			GeneratePositionValue();
 			GenerateButtons();
@@ -116,7 +136,12 @@ namespace Minesweeper
 				btn.Text = "💣";
 
 				pnlBody.Enabled = false;
-				MessageBox.Show(string.Format("Game Over!\r\nYou got {0} {1} and used {2} {3}.", points, (points == 1 ? "point" : "points"), 30 - flag, (30 - flag == 1 ? "flag" : "flags")), "MinesweeperSharp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				taskDialog.Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}";
+				int dr = taskDialog.Show();
+				if (dr == 101)
+					this.Close();
+				else
+					btnRestart.PerformClick();
 			}
 			else if (value == 20)
 			{
