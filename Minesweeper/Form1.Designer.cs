@@ -63,6 +63,7 @@
 			// 
 			// textBox2
 			// 
+			this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.textBox2.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -93,6 +94,8 @@
 			// 
 			// btnRestart
 			// 
+			this.btnRestart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnRestart.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.btnRestart.Image = global::Minesweeper.Properties.Resources.slightly_smiling_face_1f642;
 			this.btnRestart.Location = new System.Drawing.Point(162, 16);
@@ -117,7 +120,8 @@
 			// 
 			// Form1
 			// 
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(381, 417);
 			this.Controls.Add(this.pnlBody);
 			this.Controls.Add(this.panel1);
