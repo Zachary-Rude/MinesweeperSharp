@@ -426,7 +426,7 @@ namespace Minesweeper
 				{
 					boardWidth = 8;
 					boardHeight = 8;
-					totalBombs = 1;
+					totalBombs = 10;
 				}
 				else if (clickedItem == intermediateToolStripMenuItem)
 				{

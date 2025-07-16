@@ -59,7 +59,7 @@
             0,
             0});
 			this.numWidth.Minimum = new decimal(new int[] {
-            3,
+            8,
             0,
             0,
             0});
@@ -67,7 +67,7 @@
 			this.numWidth.Size = new System.Drawing.Size(120, 23);
 			this.numWidth.TabIndex = 1;
 			this.numWidth.Value = new decimal(new int[] {
-            3,
+            8,
             0,
             0,
             0});
@@ -76,20 +76,20 @@
 			// 
 			this.numHeight.Location = new System.Drawing.Point(126, 35);
 			this.numHeight.Maximum = new decimal(new int[] {
-            57,
+            78,
             0,
             0,
             0});
 			this.numHeight.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
 			this.numHeight.Name = "numHeight";
 			this.numHeight.Size = new System.Drawing.Size(120, 23);
-			this.numHeight.TabIndex = 3;
+			this.numHeight.TabIndex = 0;
 			this.numHeight.Value = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -107,12 +107,12 @@
 			// 
 			this.numericUpDown1.Location = new System.Drawing.Point(126, 64);
 			this.numericUpDown1.Maximum = new decimal(new int[] {
-            57,
+            4401,
             0,
             0,
             0});
 			this.numericUpDown1.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -120,7 +120,7 @@
 			this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
 			this.numericUpDown1.TabIndex = 5;
 			this.numericUpDown1.Value = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -158,8 +158,10 @@
 			// 
 			// CustomDifficultySelector
 			// 
+			this.AcceptButton = this.btnOk;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.CancelButton = this.btnCancel;
 			this.ClientSize = new System.Drawing.Size(361, 93);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnOk);
