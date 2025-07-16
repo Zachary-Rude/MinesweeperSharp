@@ -349,6 +349,7 @@ namespace Minesweeper
 			textBox1.Text = flag.ToString();
 			timerMS = 0;
 			timer = 0;
+			bombsFound = 0;
 			textBox2.Text = timer.ToString();
 
 			for (int x = 0; x < boardWidth; x++)
@@ -407,6 +408,7 @@ namespace Minesweeper
 				points = 0;
 				timerMS = 0;
 				timer = 0;
+				bombsFound = 0;
 				textBox2.Text = timer.ToString();
 
 				for (int x = 0; x < oldWidth; x++)
