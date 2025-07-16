@@ -342,6 +342,7 @@ namespace Minesweeper
 		private void btnRestart_Click(object sender, EventArgs e)
 		{
 			timerStarted = false;
+			timer1.Stop();
 			btnRestart.Image = Properties.Resources.slightly_smiling_face_1f642;
 			points = 0;
 			flag = totalBombs;
@@ -419,7 +420,7 @@ namespace Minesweeper
 				{
 					boardWidth = 8;
 					boardHeight = 8;
-					totalBombs = 10;
+					totalBombs = 1;
 				}
 				else if (clickedItem == intermediateToolStripMenuItem)
 				{
