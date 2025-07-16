@@ -11,3 +11,6 @@ This game plays just like any other Minesweeper game. If you already know how to
 
 ## Installation Instructions
 Simply download the zip file from the [releases page](https://github.com/Zachary-Rude/Minesweepersharp/releases), extract it, and launch `MinesweeperSharp.exe`!
+
+## Credits
+This project uses emojis from [Twemoji](https://github.com/jdecked/twemoji), which are licensed under the CC-BY 4.0.
