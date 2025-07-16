@@ -157,8 +157,9 @@
 			// 
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.newToolStripMenuItem.Text = "New";
+			this.newToolStripMenuItem.Click += new System.EventHandler(this.btnRestart_Click);
 			// 
 			// toolStripSeparator1
 			// 

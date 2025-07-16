@@ -429,8 +429,8 @@ namespace Minesweeper
 				}
 				else if (clickedItem == expertToolStripMenuItem)
 				{
-					boardWidth = 30;
-					boardHeight = 16;
+					boardWidth = 16;
+					boardHeight = 30;
 					totalBombs = 99;
 				}
 				flag = totalBombs;
