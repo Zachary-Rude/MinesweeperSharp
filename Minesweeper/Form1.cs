@@ -17,11 +17,11 @@ namespace Minesweeper
 {
 	public partial class Form1: Form
 	{
-		int boardWidth = 15;
-		int boardHeight = 15;
+		public int boardWidth = 15;
+		public int boardHeight = 15;
 		int oldWidth;
 		int oldHeight;
-		int totalBombs = 99;
+		public int totalBombs = 30;
 		byte[,] Positions = new byte[16, 30];
 		Button[,] ButtonList = new Button[16, 30];
 		TaskDialog taskDialog;
@@ -33,6 +33,8 @@ namespace Minesweeper
 		{
 			InitializeComponent();
 			timer1.Stop();
+			flag = totalBombs;
+			textBox1.Text = flag.ToString();
 			Positions = new byte[boardWidth, boardHeight];
 			ButtonList = new Button[boardWidth, boardHeight];
 			this.Icon = Properties.Resources.icon;

@@ -32,13 +32,13 @@
 			this.numWidth = new System.Windows.Forms.NumericUpDown();
 			this.numHeight = new System.Windows.Forms.NumericUpDown();
 			this.label2 = new System.Windows.Forms.Label();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.numBombs = new System.Windows.Forms.NumericUpDown();
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnOk = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.numWidth)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numHeight)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numBombs)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -103,23 +103,23 @@
 			this.label2.TabIndex = 2;
 			this.label2.Text = "Board &height:";
 			// 
-			// numericUpDown1
+			// numBombs
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(126, 64);
-			this.numericUpDown1.Maximum = new decimal(new int[] {
+			this.numBombs.Location = new System.Drawing.Point(126, 64);
+			this.numBombs.Maximum = new decimal(new int[] {
             4401,
             0,
             0,
             0});
-			this.numericUpDown1.Minimum = new decimal(new int[] {
+			this.numBombs.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
-			this.numericUpDown1.TabIndex = 5;
-			this.numericUpDown1.Value = new decimal(new int[] {
+			this.numBombs.Name = "numBombs";
+			this.numBombs.Size = new System.Drawing.Size(120, 23);
+			this.numBombs.TabIndex = 5;
+			this.numBombs.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -144,6 +144,7 @@
 			this.btnOk.TabIndex = 6;
 			this.btnOk.Text = "&OK";
 			this.btnOk.UseVisualStyleBackColor = true;
+			this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
 			// 
 			// btnCancel
 			// 
@@ -165,7 +166,7 @@
 			this.ClientSize = new System.Drawing.Size(361, 93);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnOk);
-			this.Controls.Add(this.numericUpDown1);
+			this.Controls.Add(this.numBombs);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.numHeight);
 			this.Controls.Add(this.label2);
@@ -177,11 +178,12 @@
 			this.MinimizeBox = false;
 			this.Name = "CustomDifficultySelector";
 			this.ShowIcon = false;
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Custom Field";
 			((System.ComponentModel.ISupportInitialize)(this.numWidth)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numHeight)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numBombs)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -193,7 +195,7 @@
 		private System.Windows.Forms.NumericUpDown numWidth;
 		private System.Windows.Forms.NumericUpDown numHeight;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.NumericUpDown numBombs;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button btnOk;
 		private System.Windows.Forms.Button btnCancel;
