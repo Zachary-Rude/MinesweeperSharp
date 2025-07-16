@@ -308,7 +308,7 @@ namespace Minesweeper
 								timerStarted = false;
 								btnRestart.Image = Properties.Resources.smiling_face_with_sunglasses_1f60e;
 								pnlBody.Enabled = false;
-								taskDialog.MainInstruction = "You Win!!";
+								taskDialog.MainInstruction = "You Win!";
 								taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {totalBombs - flag} {(totalBombs - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
 								int dr = taskDialog.Show();
 								if (dr == 101)
