@@ -313,7 +313,7 @@ namespace Minesweeper
 								taskDialog.MainInstruction = "You Win!";
 								TimeSpan timeSpan = TimeSpan.FromSeconds(timer);
 								string timeString = (timeSpan.Hours >= 1 ? $"{timeSpan.Hours} {(timeSpan.Hours == 1 ? "hour" : "hours")} {timeSpan.Minutes} {(timeSpan.Minutes == 1 ? "minute" : "minutess")} {timeSpan.Seconds} {(timeSpan.Seconds == 1 ? "second" : "seconds")}" : (timeSpan.Minutes >= 1 ? $"{timeSpan.Minutes} {(timeSpan.Minutes == 1 ? "minute" : "minutes")} {timeSpan.Seconds} {(timeSpan.Seconds == 1 ? "second" : "seconds")}" : $"{timer} {(timer == 1 ? "second" : "seconds")}"));
-								taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {totalBombs - flag} {(totalBombs - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timeString}\r\nDo you want to try again?";
+								taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {totalBombs - flag} {(totalBombs - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timeString}\r\nDo you want to play again?";
 								int dr = taskDialog.Show();
 								if (dr == 101)
 									this.Close();
