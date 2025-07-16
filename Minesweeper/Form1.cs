@@ -16,15 +16,26 @@ namespace Minesweeper
 {
 	public partial class Form1: Form
 	{
+		int width = 15;
+		int height = 15;
+		int oldWidth;
+		int oldHeight;
+		int totalBombs = 30;
 		byte[,] Positions = new byte[15, 15];
 		Button[,] ButtonList = new Button[15, 15];
 		TaskDialog taskDialog;
 		int timerMS = 0;
 		int timer = 0;
+		bool timerStarted = false;
+		int bombsFound = 0;
 		public Form1()
 		{
 			InitializeComponent();
+			timer1.Stop();
+			oldWidth = width;
+			oldHeight = height;
 			this.Icon = Properties.Resources.icon;
+			menuStrip1.Renderer = new ToolStripAeroRenderer(ToolbarTheme.Toolbar);
 			TaskDialogButton btnPlayAgain = new TaskDialogButton()
 			{
 				ButtonId = 100,
@@ -46,18 +57,28 @@ namespace Minesweeper
 			GenerateBombs();
 			GeneratePositionValue();
 			GenerateButtons();
-			timer1.Start();
 			label1.Focus();
+		}
+		protected T[,] ResizeArray<T>(T[,] original, int x, int y)
+		{
+			T[,] newArray = new T[x, y];
+			int minX = Math.Min(original.GetLength(0), newArray.GetLength(0));
+			int minY = Math.Min(original.GetLength(1), newArray.GetLength(1));
+
+			for (int i = 0; i < minY; ++i)
+				Array.Copy(original, i * original.GetLength(0), newArray, i * newArray.GetLength(0), minX);
+
+			return newArray;
 		}
 
 		Random rnd = new Random();
 		private void GenerateBombs()
 		{
 			int bombs = 0;
-			while (bombs < 30)
+			while (bombs < totalBombs)
 			{
-				int x = rnd.Next(0, 14);
-				int y = rnd.Next(0, 14);
+				int x = rnd.Next(0, width - 1);
+				int y = rnd.Next(0, width - 1);
 
 				if (Positions[x,y] == 0)
 				{
@@ -69,9 +90,9 @@ namespace Minesweeper
 
 		private void GeneratePositionValue()
 		{
-			for (int x = 0; x < 15; x++)
+			for (int x = 0; x < width; x++)
 			{
-				for (int y = 0; y < 15; y++)
+				for (int y = 0; y < height; y++)
 				{
 					if (Positions[x, y] == 10)
 						continue;
@@ -84,7 +105,7 @@ namespace Minesweeper
 						{
 							int checkerY = y + counterY;
 
-							if (checkerX == -1 || checkerY == -1 || checkerX > 14 || checkerY > 14)
+							if (checkerX == -1 || checkerY == -1 || checkerX > width - 1 || checkerY > height - 1)
 								continue;
 
 							if (checkerY == y && checkerX == x)
@@ -107,9 +128,9 @@ namespace Minesweeper
 		{
 			int xLoc = 3;
 			int yLoc = 6;
-			for (int x = 0; x < 15; x++)
+			for (int x = 0; x < width; x++)
 			{
-				for (int y = 0; y < 15; y++)
+				for (int y = 0; y < height; y++)
 				{
 					Button btn = new Button();
 					btn.Parent = pnlBody;
@@ -136,15 +157,21 @@ namespace Minesweeper
 			int x = Convert.ToInt32(btn.Tag.ToString().Split(',').GetValue(0));
 			int y = Convert.ToInt32(btn.Tag.ToString().Split(',').GetValue(1));
 			byte value = Positions[x, y];
-
+			if (!timerStarted)
+			{
+				timerStarted = true;
+				timer1.Start();
+			}
 			if (value == 10)
 			{
+				timerStarted = false;
 				timer1.Stop();
 				btnRestart.Image = Properties.Resources.dizzy_face_1f635;
 				btn.Font = new Font("Segoe UI Emoji", 8.25F);
 				btn.Text = "💣";
 
 				pnlBody.Enabled = false;
+				taskDialog.MainInstruction = "Game Over!";
 				taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
 				int dr = taskDialog.Show();
 				if (dr == 101)
@@ -217,7 +244,7 @@ namespace Minesweeper
 				{
 					int checkerY = y + counterY;
 
-					if (checkerX == -1 || checkerY == -1 || checkerX > 14 || checkerY > 14)
+					if (checkerX == -1 || checkerY == -1 || checkerX > width - 1 || checkerY > height - 1)
 						continue;
 
 					if (checkerY == y && checkerX == x)
@@ -270,6 +297,26 @@ namespace Minesweeper
 						btn.Font = new Font("Segoe UI Emoji", 8.25F);
 						btn.Click -= BtnClick;
 						flag--;
+						int x = Convert.ToInt32(btn.Tag.ToString().Split(',').GetValue(0));
+						int y = Convert.ToInt32(btn.Tag.ToString().Split(',').GetValue(1));
+						if (Positions[x, y] == 10)
+						{
+							bombsFound++;
+							if (bombsFound == totalBombs)
+							{
+								timer1.Stop();
+								timerStarted = false;
+								btnRestart.Image = Properties.Resources.smiling_face_with_sunglasses_1f60e;
+								pnlBody.Enabled = false;
+								taskDialog.MainInstruction = "You Win!!";
+								taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
+								int dr = taskDialog.Show();
+								if (dr == 101)
+									this.Close();
+								else
+									btnRestart.PerformClick();
+							}
+						}
 					}
 				}
 				else if (!int.TryParse(btn.Text, out _))
@@ -278,6 +325,10 @@ namespace Minesweeper
 					btn.Font = new Font("Consolas", 8.25F);
 					btn.Click += BtnClick;
 					flag++;
+					int x = Convert.ToInt32(btn.Tag.ToString().Split(',').GetValue(0));
+					int y = Convert.ToInt32(btn.Tag.ToString().Split(',').GetValue(1));
+					if (Positions[x, y] == 10)
+						bombsFound--;
 				}
 				textBox1.Text = flag.ToString();
 			}
@@ -290,31 +341,34 @@ namespace Minesweeper
 
 		private void btnRestart_Click(object sender, EventArgs e)
 		{
+			timerStarted = false;
 			btnRestart.Image = Properties.Resources.slightly_smiling_face_1f642;
 			points = 0;
-			flag = 30;
+			flag = totalBombs;
 			textBox1.Text = flag.ToString();
 			timerMS = 0;
 			timer = 0;
 			textBox2.Text = timer.ToString();
 
-			for (int x = 0; x < 15; x++)
+			for (int x = 0; x < width; x++)
 			{
-				for (int y = 0; y < 15; y++)
+				for (int y = 0; y < height; y++)
 				{
 					ButtonList[x, y].Dispose();
 				}
 			}
 
+			this.Width = (width * 25) + 22;
+			this.Height = (height * 22) + 152;
+			byte[,] newPositions = new byte[width, height];
+			Button[,] newButtonList = new Button[width, height];
+			Positions = newPositions;
+			ButtonList = newButtonList;
 			pnlBody.Enabled = true;
 			pnlBody.Controls.Clear();
-			ButtonList = new Button[15, 15];
-			Positions = new byte[15, 15];
-
 			GenerateBombs();
 			GeneratePositionValue();
 			GenerateButtons();
-			timer1.Start();
 			label1.Focus();
 		}
 
@@ -331,6 +385,39 @@ namespace Minesweeper
 				timer++;
 				timerMS = 0;
 				textBox2.Text = timer.ToString();
+			}
+		}
+
+		private void difficultyMenu_Click(object sender, EventArgs e)
+		{
+			ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+			bool sameItem = clickedItem.Checked;
+			foreach (ToolStripMenuItem item in difficultyToolStripMenuItem.DropDownItems)
+			{
+				item.Checked = item == clickedItem;
+			}
+
+			if (!sameItem)
+			{
+				if (clickedItem == beginnerToolStripMenuItem)
+				{
+					width = 8;
+					height = 8;
+					totalBombs = 10;
+				}
+				else if (clickedItem == intermediateToolStripMenuItem)
+				{
+					width = 15;
+					height = 15;
+					totalBombs = 30;
+				}
+				else if (clickedItem == expertToolStripMenuItem)
+				{
+					width = 30;
+					height = 16;
+					totalBombs = 99;
+				}
+				btnRestart.PerformClick();
 			}
 		}
 	}

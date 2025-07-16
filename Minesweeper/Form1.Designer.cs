@@ -34,9 +34,21 @@
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.btnRestart = new System.Windows.Forms.Button();
-			this.pnlBody = new System.Windows.Forms.Panel();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.pnlBody = new System.Windows.Forms.Panel();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.difficultyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.beginnerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.intermediateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.expertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.customToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -46,7 +58,7 @@
 			this.panel1.Controls.Add(this.textBox1);
 			this.panel1.Controls.Add(this.btnRestart);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Location = new System.Drawing.Point(0, 24);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(381, 76);
 			this.panel1.TabIndex = 0;
@@ -94,8 +106,7 @@
 			// 
 			// btnRestart
 			// 
-			this.btnRestart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRestart.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.btnRestart.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.btnRestart.Image = global::Minesweeper.Properties.Resources.slightly_smiling_face_1f642;
 			this.btnRestart.Location = new System.Drawing.Point(162, 16);
@@ -105,35 +116,126 @@
 			this.btnRestart.UseVisualStyleBackColor = true;
 			this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
 			// 
-			// pnlBody
-			// 
-			this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pnlBody.Location = new System.Drawing.Point(0, 76);
-			this.pnlBody.Name = "pnlBody";
-			this.pnlBody.Size = new System.Drawing.Size(381, 341);
-			this.pnlBody.TabIndex = 1;
-			// 
 			// timer1
 			// 
 			this.timer1.Enabled = true;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
 			// 
+			// pnlBody
+			// 
+			this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnlBody.Location = new System.Drawing.Point(0, 100);
+			this.pnlBody.Name = "pnlBody";
+			this.pnlBody.Size = new System.Drawing.Size(381, 343);
+			this.pnlBody.TabIndex = 1;
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+			this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			this.menuStrip1.Size = new System.Drawing.Size(381, 24);
+			this.menuStrip1.TabIndex = 2;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// gameToolStripMenuItem
+			// 
+			this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.difficultyToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
+			this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+			this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+			this.gameToolStripMenuItem.Text = "Game";
+			// 
+			// newToolStripMenuItem
+			// 
+			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+			this.newToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.newToolStripMenuItem.Text = "New";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// difficultyToolStripMenuItem
+			// 
+			this.difficultyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.beginnerToolStripMenuItem,
+            this.intermediateToolStripMenuItem,
+            this.expertToolStripMenuItem,
+            this.customToolStripMenuItem});
+			this.difficultyToolStripMenuItem.Name = "difficultyToolStripMenuItem";
+			this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.difficultyToolStripMenuItem.Text = "Difficulty";
+			// 
+			// beginnerToolStripMenuItem
+			// 
+			this.beginnerToolStripMenuItem.Name = "beginnerToolStripMenuItem";
+			this.beginnerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.beginnerToolStripMenuItem.Text = "Beginner";
+			this.beginnerToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
+			// 
+			// intermediateToolStripMenuItem
+			// 
+			this.intermediateToolStripMenuItem.Checked = true;
+			this.intermediateToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.intermediateToolStripMenuItem.Name = "intermediateToolStripMenuItem";
+			this.intermediateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.intermediateToolStripMenuItem.Text = "Intermediate";
+			this.intermediateToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
+			// 
+			// expertToolStripMenuItem
+			// 
+			this.expertToolStripMenuItem.Name = "expertToolStripMenuItem";
+			this.expertToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.expertToolStripMenuItem.Text = "Expert";
+			this.expertToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
+			// 
+			// customToolStripMenuItem
+			// 
+			this.customToolStripMenuItem.Name = "customToolStripMenuItem";
+			this.customToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.customToolStripMenuItem.Text = "Custom...";
+			// 
+			// toolStripMenuItem1
+			// 
+			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exitToolStripMenuItem.Text = "Exit";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(381, 417);
+			this.ClientSize = new System.Drawing.Size(381, 443);
 			this.Controls.Add(this.pnlBody);
 			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.menuStrip1);
 			this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MinesweeperSharp";
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -143,9 +245,20 @@
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button btnRestart;
 		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.Panel pnlBody;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.Panel pnlBody;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem difficultyToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem beginnerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem intermediateToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem expertToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem customToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 	}
 }
 
