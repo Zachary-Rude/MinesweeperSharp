@@ -109,7 +109,7 @@
 			this.btnRestart.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.btnRestart.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.btnRestart.Image = global::Minesweeper.Properties.Resources.slightly_smiling_face_1f642;
-			this.btnRestart.Location = new System.Drawing.Point(162, 16);
+			this.btnRestart.Location = new System.Drawing.Point(169, 16);
 			this.btnRestart.Name = "btnRestart";
 			this.btnRestart.Size = new System.Drawing.Size(43, 43);
 			this.btnRestart.TabIndex = 5;
@@ -157,13 +157,13 @@
 			// 
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.newToolStripMenuItem.Text = "New";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
 			// 
 			// difficultyToolStripMenuItem
 			// 
@@ -173,13 +173,13 @@
             this.expertToolStripMenuItem,
             this.customToolStripMenuItem});
 			this.difficultyToolStripMenuItem.Name = "difficultyToolStripMenuItem";
-			this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.difficultyToolStripMenuItem.Text = "Difficulty";
 			// 
 			// beginnerToolStripMenuItem
 			// 
 			this.beginnerToolStripMenuItem.Name = "beginnerToolStripMenuItem";
-			this.beginnerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.beginnerToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.beginnerToolStripMenuItem.Text = "Beginner";
 			this.beginnerToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
 			// 
@@ -188,32 +188,32 @@
 			this.intermediateToolStripMenuItem.Checked = true;
 			this.intermediateToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.intermediateToolStripMenuItem.Name = "intermediateToolStripMenuItem";
-			this.intermediateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.intermediateToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.intermediateToolStripMenuItem.Text = "Intermediate";
 			this.intermediateToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
 			// 
 			// expertToolStripMenuItem
 			// 
 			this.expertToolStripMenuItem.Name = "expertToolStripMenuItem";
-			this.expertToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.expertToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.expertToolStripMenuItem.Text = "Expert";
 			this.expertToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
 			// 
 			// customToolStripMenuItem
 			// 
 			this.customToolStripMenuItem.Name = "customToolStripMenuItem";
-			this.customToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.customToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.customToolStripMenuItem.Text = "Custom...";
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(119, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			// 
 			// Form1

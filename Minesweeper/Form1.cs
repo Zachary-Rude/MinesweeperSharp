@@ -16,13 +16,13 @@ namespace Minesweeper
 {
 	public partial class Form1: Form
 	{
-		int width = 15;
-		int height = 15;
+		int boardWidth = 15;
+		int boardHeight = 15;
 		int oldWidth;
 		int oldHeight;
-		int totalBombs = 30;
-		byte[,] Positions = new byte[15, 15];
-		Button[,] ButtonList = new Button[15, 15];
+		int totalBombs = 99;
+		byte[,] Positions = new byte[16, 30];
+		Button[,] ButtonList = new Button[16, 30];
 		TaskDialog taskDialog;
 		int timerMS = 0;
 		int timer = 0;
@@ -32,8 +32,8 @@ namespace Minesweeper
 		{
 			InitializeComponent();
 			timer1.Stop();
-			oldWidth = width;
-			oldHeight = height;
+			Positions = new byte[boardWidth, boardHeight];
+			ButtonList = new Button[boardWidth, boardHeight];
 			this.Icon = Properties.Resources.icon;
 			menuStrip1.Renderer = new ToolStripAeroRenderer(ToolbarTheme.Toolbar);
 			TaskDialogButton btnPlayAgain = new TaskDialogButton()
@@ -50,7 +50,7 @@ namespace Minesweeper
 			{
 				WindowTitle = "MinesweeperSharp",
 				MainInstruction = "Game Over!",
-				Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?",
+				Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {totalBombs - flag} {(totalBombs - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?",
 				MainIcon = TaskDialogIcon.Information,
 				Buttons = new TaskDialogButton[] { btnPlayAgain, btnClose }
 			};
@@ -77,10 +77,10 @@ namespace Minesweeper
 			int bombs = 0;
 			while (bombs < totalBombs)
 			{
-				int x = rnd.Next(0, width - 1);
-				int y = rnd.Next(0, width - 1);
+				int x = rnd.Next(0, boardWidth - 1);
+				int y = rnd.Next(0, boardHeight - 1);
 
-				if (Positions[x,y] == 0)
+				if (Positions[x, y] == 0)
 				{
 					Positions[x, y] = 10;
 					bombs++;
@@ -90,9 +90,9 @@ namespace Minesweeper
 
 		private void GeneratePositionValue()
 		{
-			for (int x = 0; x < width; x++)
+			for (int x = 0; x < boardWidth; x++)
 			{
-				for (int y = 0; y < height; y++)
+				for (int y = 0; y < boardHeight; y++)
 				{
 					if (Positions[x, y] == 10)
 						continue;
@@ -105,7 +105,7 @@ namespace Minesweeper
 						{
 							int checkerY = y + counterY;
 
-							if (checkerX == -1 || checkerY == -1 || checkerX > width - 1 || checkerY > height - 1)
+							if (checkerX == -1 || checkerY == -1 || checkerX > boardWidth - 1 || checkerY > boardHeight - 1)
 								continue;
 
 							if (checkerY == y && checkerX == x)
@@ -128,9 +128,9 @@ namespace Minesweeper
 		{
 			int xLoc = 3;
 			int yLoc = 6;
-			for (int x = 0; x < width; x++)
+			for (int x = 0; x < boardWidth; x++)
 			{
-				for (int y = 0; y < height; y++)
+				for (int y = 0; y < boardHeight; y++)
 				{
 					Button btn = new Button();
 					btn.Parent = pnlBody;
@@ -172,7 +172,7 @@ namespace Minesweeper
 
 				pnlBody.Enabled = false;
 				taskDialog.MainInstruction = "Game Over!";
-				taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
+				taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {totalBombs - flag} {(totalBombs - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
 				int dr = taskDialog.Show();
 				if (dr == 101)
 					this.Close();
@@ -244,7 +244,7 @@ namespace Minesweeper
 				{
 					int checkerY = y + counterY;
 
-					if (checkerX == -1 || checkerY == -1 || checkerX > width - 1 || checkerY > height - 1)
+					if (checkerX == -1 || checkerY == -1 || checkerX > boardWidth - 1 || checkerY > boardHeight - 1)
 						continue;
 
 					if (checkerY == y && checkerX == x)
@@ -309,7 +309,7 @@ namespace Minesweeper
 								btnRestart.Image = Properties.Resources.smiling_face_with_sunglasses_1f60e;
 								pnlBody.Enabled = false;
 								taskDialog.MainInstruction = "You Win!!";
-								taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
+								taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {totalBombs - flag} {(totalBombs - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
 								int dr = taskDialog.Show();
 								if (dr == 101)
 									this.Close();
@@ -350,18 +350,18 @@ namespace Minesweeper
 			timer = 0;
 			textBox2.Text = timer.ToString();
 
-			for (int x = 0; x < width; x++)
+			for (int x = 0; x < boardWidth; x++)
 			{
-				for (int y = 0; y < height; y++)
+				for (int y = 0; y < boardHeight; y++)
 				{
 					ButtonList[x, y].Dispose();
 				}
 			}
 
-			this.Width = (width * 25) + 22;
-			this.Height = (height * 22) + 152;
-			byte[,] newPositions = new byte[width, height];
-			Button[,] newButtonList = new Button[width, height];
+			this.Width = ((boardWidth == boardHeight ? boardWidth : boardHeight) * 25) + 22;
+			this.Height = ((boardHeight == boardWidth ? boardHeight : boardWidth) * 22) + 152;
+			byte[,] newPositions = new byte[boardWidth, boardHeight];
+			Button[,] newButtonList = new Button[boardWidth, boardHeight];
 			Positions = newPositions;
 			ButtonList = newButtonList;
 			pnlBody.Enabled = true;
@@ -399,25 +399,55 @@ namespace Minesweeper
 
 			if (!sameItem)
 			{
+				oldWidth = boardWidth;
+				oldHeight = boardHeight;
+				timerStarted = false;
+				btnRestart.Image = Properties.Resources.slightly_smiling_face_1f642;
+				points = 0;
+				timerMS = 0;
+				timer = 0;
+				textBox2.Text = timer.ToString();
+
+				for (int x = 0; x < oldWidth; x++)
+				{
+					for (int y = 0; y < oldHeight; y++)
+					{
+						ButtonList[x, y].Dispose();
+					}
+				}
 				if (clickedItem == beginnerToolStripMenuItem)
 				{
-					width = 8;
-					height = 8;
+					boardWidth = 8;
+					boardHeight = 8;
 					totalBombs = 10;
 				}
 				else if (clickedItem == intermediateToolStripMenuItem)
 				{
-					width = 15;
-					height = 15;
+					boardWidth = 15;
+					boardHeight = 15;
 					totalBombs = 30;
 				}
 				else if (clickedItem == expertToolStripMenuItem)
 				{
-					width = 30;
-					height = 16;
+					boardWidth = 30;
+					boardHeight = 16;
 					totalBombs = 99;
 				}
-				btnRestart.PerformClick();
+				flag = totalBombs;
+				textBox1.Text = flag.ToString();
+
+				this.Width = ((boardWidth == boardHeight ? boardWidth : boardHeight) * 25) + 22;
+				this.Height = ((boardHeight == boardWidth ? boardHeight : boardWidth) * 22) + 152;
+				byte[,] newPositions = new byte[boardWidth, boardHeight];
+				Button[,] newButtonList = new Button[boardWidth, boardHeight];
+				Positions = newPositions;
+				ButtonList = newButtonList;
+				pnlBody.Enabled = true;
+				pnlBody.Controls.Clear();
+				GenerateBombs();
+				GeneratePositionValue();
+				GenerateButtons();
+				label1.Focus();
 			}
 		}
 	}
