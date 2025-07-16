@@ -125,5 +125,17 @@
   <ItemGroup>
     <None Include="Resources\minesweeper-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slightly-smiling-face_1f642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dizzy-face_1f635.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\face-with-open-mouth_1f62e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smiling-face-with-sunglasses_1f60e.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

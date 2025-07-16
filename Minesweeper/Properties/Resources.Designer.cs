@@ -61,12 +61,32 @@ namespace Minesweeper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dizzy_face_1f635 {
+            get {
+                object obj = ResourceManager.GetObject("dizzy_face_1f635", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] DSEG14Classic_Bold {
             get {
                 object obj = ResourceManager.GetObject("DSEG14Classic_Bold", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap face_with_open_mouth_1f62e {
+            get {
+                object obj = ResourceManager.GetObject("face_with_open_mouth_1f62e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -86,6 +106,26 @@ namespace Minesweeper.Properties {
         internal static System.Drawing.Bitmap minesweeper_icon {
             get {
                 object obj = ResourceManager.GetObject("minesweeper_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap slightly_smiling_face_1f642 {
+            get {
+                object obj = ResourceManager.GetObject("slightly_smiling_face_1f642", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap smiling_face_with_sunglasses_1f60e {
+            get {
+                object obj = ResourceManager.GetObject("smiling_face_with_sunglasses_1f60e", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

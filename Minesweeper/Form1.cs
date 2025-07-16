@@ -19,6 +19,8 @@ namespace Minesweeper
 		byte[,] Positions = new byte[15, 15];
 		Button[,] ButtonList = new Button[15, 15];
 		TaskDialog taskDialog;
+		int timerMS = 0;
+		int timer = 0;
         public Form1()
         {
             InitializeComponent();
@@ -37,13 +39,14 @@ namespace Minesweeper
 			{
 				WindowTitle = "MinesweeperSharp",
 				MainInstruction = "Game Over!",
-				Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}. Do you want to try again?",
+				Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?",
 				MainIcon = TaskDialogIcon.Information,
 				Buttons = new TaskDialogButton[] { btnPlayAgain, btnClose }
 			};
 			GenerateBombs();
 			GeneratePositionValue();
 			GenerateButtons();
+			timer1.Start();
         }
 
 		Random rnd = new Random();
@@ -114,6 +117,7 @@ namespace Minesweeper
 					btn.Font = new Font("Consolas", 8.25F);
 					btn.Tag = $"{x},{y}";
 					btn.Click += BtnClick;
+					btn.MouseDown += BtnMouseDown;
 					btn.MouseUp += BtnMouseUp;
 					btn.Enter += btnRestart_Enter;
 					xLoc += 25;
@@ -134,11 +138,13 @@ namespace Minesweeper
 
 			if (value == 10)
 			{
+				timer1.Stop();
+				btnRestart.Image = Properties.Resources.dizzy_face_1f635;
 				btn.Font = new Font("Segoe UI Emoji", 8.25F);
 				btn.Text = "💣";
 
 				pnlBody.Enabled = false;
-				taskDialog.Content = $"You got {points} {(points == 1 ? "point" : "points")} and used {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}. Do you want to try again?";
+				taskDialog.Content = $"Score: {points} {(points == 1 ? "point" : "points")}\r\nFlags used: {30 - flag} {(30 - flag == 1 ? "flag" : "flags")}\r\nTime taken: {timer} {(timer == 1 ? "second" : "seconds")}\r\nDo you want to try again?";
 				int dr = taskDialog.Show();
 				if (dr == 101)
 					this.Close();
@@ -194,7 +200,6 @@ namespace Minesweeper
 				points++;
 			}
 			btn.Click -= BtnClick;
-			textBox2.Text = points.ToString();
 		}
 
 		private void OpenAdjacentEmptyTile(Button btn)
@@ -252,6 +257,7 @@ namespace Minesweeper
 		int points = 0;
 		private void BtnMouseUp(object sender, MouseEventArgs e)
 		{
+			btnRestart.Image = Properties.Resources.slightly_smiling_face_1f642;
 			if (e.Button == MouseButtons.Right)
 			{
 				Button btn = (Button)sender;
@@ -276,12 +282,20 @@ namespace Minesweeper
 			}
 		}
 
+		private void BtnMouseDown(object sender, MouseEventArgs e)
+		{
+			btnRestart.Image = Properties.Resources.face_with_open_mouth_1f62e;
+		}
+
 		private void btnRestart_Click(object sender, EventArgs e)
 		{
+			btnRestart.Image = Properties.Resources.slightly_smiling_face_1f642;
 			points = 0;
-			textBox2.Text = points.ToString();
 			flag = 30;
 			textBox1.Text = flag.ToString();
+			timerMS = 0;
+			timer = 0;
+			textBox2.Text = timer.ToString();
 
 			for (int x = 0; x < 15; x++)
 			{
@@ -299,11 +313,23 @@ namespace Minesweeper
 			GenerateBombs();
 			GeneratePositionValue();
 			GenerateButtons();
+			timer1.Start();
 		}
 
 		private void btnRestart_Enter(object sender, EventArgs e)
 		{
 			label1.Focus();
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			timerMS += 100;
+			if (timerMS == 1000)
+			{
+				timer++;
+				timerMS = 0;
+				textBox2.Text = timer.ToString();
+			}
 		}
 	}
 }
