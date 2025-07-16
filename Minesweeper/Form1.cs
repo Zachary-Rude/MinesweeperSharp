@@ -14,16 +14,16 @@ using Microsoft.Samples;
 
 namespace Minesweeper
 {
-    public partial class Form1: Form
-    {
+	public partial class Form1: Form
+	{
 		byte[,] Positions = new byte[15, 15];
 		Button[,] ButtonList = new Button[15, 15];
 		TaskDialog taskDialog;
 		int timerMS = 0;
 		int timer = 0;
-        public Form1()
-        {
-            InitializeComponent();
+		public Form1()
+		{
+			InitializeComponent();
 			this.Icon = Properties.Resources.icon;
 			TaskDialogButton btnPlayAgain = new TaskDialogButton()
 			{
@@ -47,7 +47,8 @@ namespace Minesweeper
 			GeneratePositionValue();
 			GenerateButtons();
 			timer1.Start();
-        }
+			label1.Focus();
+		}
 
 		Random rnd = new Random();
 		private void GenerateBombs()
@@ -314,6 +315,7 @@ namespace Minesweeper
 			GeneratePositionValue();
 			GenerateButtons();
 			timer1.Start();
+			label1.Focus();
 		}
 
 		private void btnRestart_Enter(object sender, EventArgs e)

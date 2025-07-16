@@ -98,7 +98,7 @@
 			this.btnRestart.Location = new System.Drawing.Point(162, 16);
 			this.btnRestart.Name = "btnRestart";
 			this.btnRestart.Size = new System.Drawing.Size(43, 43);
-			this.btnRestart.TabIndex = 0;
+			this.btnRestart.TabIndex = 5;
 			this.btnRestart.UseVisualStyleBackColor = true;
 			this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
 			// 
