@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -456,6 +457,16 @@ namespace Minesweeper
 				GenerateButtons();
 				label1.Focus();
 			}
+		}
+
+		private void howToPlayToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Process.Start("https://github.com/Zachary-Rude/MinesweeperSharp#how-to-play");
+		}
+
+		private void aboutMinesweeperSharpToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			(new AboutForm()).ShowDialog();
 		}
 	}
 }

@@ -47,6 +47,10 @@
 			this.customToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.howToPlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+			this.aboutMinesweeperSharpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -132,7 +136,8 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gameToolStripMenuItem});
+            this.gameToolStripMenuItem,
+            this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -157,7 +162,7 @@
 			// 
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.newToolStripMenuItem.Text = "&New";
 			this.newToolStripMenuItem.Click += new System.EventHandler(this.btnRestart_Click);
 			// 
@@ -174,13 +179,13 @@
             this.expertToolStripMenuItem,
             this.customToolStripMenuItem});
 			this.difficultyToolStripMenuItem.Name = "difficultyToolStripMenuItem";
-			this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.difficultyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.difficultyToolStripMenuItem.Text = "&Difficulty";
 			// 
 			// beginnerToolStripMenuItem
 			// 
 			this.beginnerToolStripMenuItem.Name = "beginnerToolStripMenuItem";
-			this.beginnerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.beginnerToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.beginnerToolStripMenuItem.Text = "&Beginner";
 			this.beginnerToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
 			// 
@@ -189,21 +194,21 @@
 			this.intermediateToolStripMenuItem.Checked = true;
 			this.intermediateToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.intermediateToolStripMenuItem.Name = "intermediateToolStripMenuItem";
-			this.intermediateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.intermediateToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.intermediateToolStripMenuItem.Text = "&Intermediate";
 			this.intermediateToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
 			// 
 			// expertToolStripMenuItem
 			// 
 			this.expertToolStripMenuItem.Name = "expertToolStripMenuItem";
-			this.expertToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.expertToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.expertToolStripMenuItem.Text = "&Expert";
 			this.expertToolStripMenuItem.Click += new System.EventHandler(this.difficultyMenu_Click);
 			// 
 			// customToolStripMenuItem
 			// 
 			this.customToolStripMenuItem.Name = "customToolStripMenuItem";
-			this.customToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.customToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.customToolStripMenuItem.Text = "&Custom...";
 			// 
 			// toolStripMenuItem1
@@ -214,8 +219,39 @@
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
+			// 
+			// helpToolStripMenuItem
+			// 
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.howToPlayToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.aboutMinesweeperSharpToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.helpToolStripMenuItem.Text = "&Help";
+			// 
+			// howToPlayToolStripMenuItem
+			// 
+			this.howToPlayToolStripMenuItem.Name = "howToPlayToolStripMenuItem";
+			this.howToPlayToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+			this.howToPlayToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+			this.howToPlayToolStripMenuItem.Text = "&How to Play";
+			this.howToPlayToolStripMenuItem.Click += new System.EventHandler(this.howToPlayToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem2
+			// 
+			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(258, 6);
+			// 
+			// aboutMinesweeperSharpToolStripMenuItem
+			// 
+			this.aboutMinesweeperSharpToolStripMenuItem.Name = "aboutMinesweeperSharpToolStripMenuItem";
+			this.aboutMinesweeperSharpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F1)));
+			this.aboutMinesweeperSharpToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+			this.aboutMinesweeperSharpToolStripMenuItem.Text = "&About MinesweeperSharp";
+			this.aboutMinesweeperSharpToolStripMenuItem.Click += new System.EventHandler(this.aboutMinesweeperSharpToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
@@ -260,6 +296,10 @@
 		private System.Windows.Forms.ToolStripMenuItem customToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem howToPlayToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+		private System.Windows.Forms.ToolStripMenuItem aboutMinesweeperSharpToolStripMenuItem;
 	}
 }
 
