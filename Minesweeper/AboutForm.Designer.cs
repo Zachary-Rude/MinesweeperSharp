@@ -96,7 +96,7 @@
 			this.labelVersion.Name = "labelVersion";
 			this.labelVersion.Size = new System.Drawing.Size(316, 20);
 			this.labelVersion.TabIndex = 0;
-			this.labelVersion.Text = "Version 1.3.0";
+			this.labelVersion.Text = "Version 1.3.1";
 			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// textBoxDescription
